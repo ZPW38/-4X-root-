@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- mDNS discovery of the local adb pairing service (NsdManager needs INTERNET and
+         ACCESS_NETWORK_STATE) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Pairing entry point in the notification shade -->
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS"
+        tools:targetApi="33" />
+
+    <!-- Foreground service while looking for pairing requests -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
+        tools:targetApi="34" />
+
+    <!-- The same UI is measured against a phone or a watch display; declaring the watch feature
+         as not required keeps one APK installable on both. -->
+    <uses-feature
+        android:name="android.hardware.type.watch"
+        android:required="false" />
+
+    <!-- Locate and open the KernelSU family manager after temporary root (Android 11+ package
+         visibility) -->
+    <queries>
+        <!-- Enumerate apps with a launcher icon so renamed or forked root managers are found -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <package android:name="me.weishu.kernelsu" />
+        <package android:name="me.weishu.kernelsu.pr" />
+        <package android:name="com.resukisu.resukisu" />
+        <package android:name="org.bakasu.bakasu" />
+        <package android:name="com.kowx712.supermanager" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WatchRoot">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Shizuku: the provider hands this app the binder of a running Shizuku service, which
+             already holds the `shell` user's privileges. Backend for ConnectionMode.SHIZUKU. -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="false"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+        <service
+            android:name=".adb.AdbPairingService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Listen for Android wireless debugging (ADB) pairing requests and pair on user input" />
+        </service>
+    </application>
+
+</manifest>

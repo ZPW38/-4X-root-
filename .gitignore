@@ -1,0 +1,18 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+
+# The prebuilt arm64 payload is committed on purpose (payload/arm64-v8a/*.so) so
+# that anyone can reproduce the APK without a cross compiler; the sources stay
+# in native/. jniLibs is still a build directory: Gradle fills it from payload/.
+app/src/main/jniLibs/
+
+# Keystores must never be committed
+*.jks
+*.keystore

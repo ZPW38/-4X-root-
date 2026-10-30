@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 (Material You) base theme. The dynamic colour scheme is applied at runtime
+         from the system wallpaper on Android 12+, so the static theme only has to supply the
+         baseline colours for older releases. -->
+    <style name="Theme.WatchRoot" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>

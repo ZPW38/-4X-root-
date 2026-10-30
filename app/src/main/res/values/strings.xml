@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">WatchRoot</string>
+
+    <!-- Main screen -->
+    <string name="title_root">临时 Root</string>
+    <string name="action_start">获取 Root</string>
+    <string name="action_retry">重试</string>
+    <string name="action_stop">停止</string>
+    <string name="label_device">设备</string>
+    <string name="label_kernel">内核</string>
+    <string name="label_state">状态</string>
+    <string name="label_adb">ADB</string>
+    <string name="label_log">运行日志</string>
+    <string name="hint_success">Root 已就绪，可直接使用 shell</string>
+    <string name="log_empty">暂无日志</string>
+
+    <!-- Wireless debugging pairing notification -->
+    <string name="adb_pairing_channel_name">无线调试配对</string>
+    <string name="adb_pairing_channel_description">配对华为手表上的无线调试服务</string>
+    <string name="adb_pairing_searching_title">正在搜索配对服务</string>
+    <string name="adb_pairing_searching_text">请在手表上打开「无线调试」中的“使用配对码配对设备”</string>
+    <string name="adb_pairing_found_title">已找到配对服务</string>
+    <string name="adb_pairing_found_text">点按下方按钮，输入手表上显示的六位配对码</string>
+    <string name="adb_pairing_code_hint">配对码</string>
+    <string name="adb_pairing_input_code">输入配对码</string>
+    <string name="adb_pairing_working_title">正在配对</string>
+    <string name="adb_pairing_working_text">正在与端口 %1$d 协商密钥…</string>
+    <string name="adb_pairing_succeed_title">配对成功</string>
+    <string name="adb_pairing_succeed_text">无线调试已授权，可以连接设备了</string>
+    <string name="adb_pairing_failed_title">配对失败</string>
+    <string name="adb_pairing_failed_empty_code">配对码为空</string>
+    <string name="adb_pairing_failed_port">配对端口无效或已关闭</string>
+    <string name="adb_pairing_failed_code">配对码不正确或已过期</string>
+    <string name="adb_pairing_failed_tls">TLS 握手失败</string>
+    <string name="adb_pairing_failed_tls_export">无法导出 TLS 密钥材料，请重试</string>
+    <string name="adb_pairing_stop">停止</string>
+    <string name="adb_pairing_retry">重试</string>
+
+    <!-- Connection -->
+    <string name="title_connect">连接设备</string>
+    <string name="action_pair">配对</string>
+    <string name="action_connect">连接</string>
+    <string name="hint_host">设备 IP</string>
+    <string name="hint_port">端口</string>
+
+    <!-- States -->
+    <string name="state_idle">空闲</string>
+    <string name="state_connecting">连接中…</string>
+    <string name="state_pairing">配对中…</string>
+    <string name="state_pushing">推送 payload…</string>
+    <string name="state_running">正在提权…</string>
+    <string name="state_success">已获得 Root</string>
+    <string name="state_failed">提权失败</string>
+
+    <!-- About -->
+    <string name="title_about">关于</string>
+    <string name="license_title">GNU GPL v3.0</string>
+</resources>
